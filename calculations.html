@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>TaxReview</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tax-reliefs.html">Tax Reliefs</a></li>
+                <li><a href="calculations.html">Calculations</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Calculate Your Taxes</h2>
+        <form>
+            <label for="income">Annual Income:</label>
+            <input type="number" id="income" name="income" required>
+
+            <label for="dependents">Number of Dependents:</label>
+            <input type="number" id="dependents" name="dependents" required>
+
+            <label for="filing-status">Filing Status:</label>
+            <select id="filing-status" name="filing-status">
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+            </select>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="documents">Upload Tax Documents:</label>
+            <input type="file" id="documents" name="documents">
+
+            <button type="submit" class="calculations-button">Calculate</button>
+        </form>
+    </main>
+</body>
+</html>
