@@ -1,48 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Overlay styles for images */
+    .image-overlay-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .image-overlay-container img {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .image-overlay-container:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.85);
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(243, 156, 18, 0.9); /* orange */
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 4px 0;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .image-overlay-container:hover .image-overlay {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>TaxReview</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tax-reliefs.html">Tax Reliefs</a></li>
-                <li><a href="calculations.html">Calculations</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Important Tax Deadlines</h2>
-        <table>
-            <tr>
-                <th>Deadline Date</th>
-                <th>Description</th>
-                <th>Image</th>
-            </tr>
-            <tr>
-                <td><span class="date-highlight"></span>May 1</span></td>
-                <td>Tax Filing Deadline</td>
-                <td><img src="asset/tax-deadline.jpg" alt="Tax deadline" width="100"></td>
-            </tr>
-            <tr>
-                <td><span class="date-highlight"></span>November 15</span></td>
-                <td>Land Tax Payment</td>
-                <td><img src="asset/land-tax.jpg" alt="Land tax payment" width="100"></td>
-            </tr>
-            <tr>
-                <td><span class="date-highlight"></span>December 15</span></td>
-                <td>Estate Tax Payment</td>
-                <td><img src="asset/estate-tax.jpg" alt="Estate tax payment" width="100"></td>
-            </tr>
-        </table>
-    </main>
+  <header class="bg-dark text-white text-center py-3">
+    <h1>TaxReview</h1>
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="tax-reliefs.html">Tax Reliefs</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calculations.html">Calculations</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calendar.html">Calendar</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="api-demo.html">API Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h2 class="text-center mb-4">Important Tax Deadlines</h2>
+    <table class="table table-bordered table-striped text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Deadline Date</th>
+          <th>Description</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="date-highlight">May 1</span></td>
+          <td>Tax Filing Deadline</td>
+          <td>
+            <div class="image-overlay-container">
+              <img src="asset/tax-deadline.jpg" alt="Tax deadline" class="img-fluid" width="100" />
+              <div class="image-overlay">Don't miss this date!</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="date-highlight">November 15</span></td>
+          <td>Land Tax Payment</td>
+          <td>
+            <div class="image-overlay-container">
+              <img src="asset/land-tax.jpg" alt="Land tax payment" class="img-fluid" width="100" />
+              <div class="image-overlay">Land tax due soon!</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="date-highlight">December 15</span></td>
+          <td>Estate Tax Payment</td>
+          <td>
+            <div class="image-overlay-container">
+              <img src="asset/estate-tax.jpg" alt="Estate tax payment" class="img-fluid" width="100" />
+              <div class="image-overlay">Estate tax final deadline</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Scroll-revealed tip -->
+    <div id="scrollMessage">
+      📅 Pro Tip: Subscribe to calendar reminders so you never miss a tax deadline again!
+    </div>
+    <div style="height: 600px;"></div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS: Scroll and DOM events -->
+  <script>
+    // Show tip on scroll
+    window.addEventListener("scroll", function () {
+      const scrollTip = document.getElementById("scrollMessage");
+      const y = window.scrollY;
+      if (y > 300) {
+        scrollTip.style.display = "block";
+        scrollTip.style.opacity = "1";
+      }
+    });
+
+    // Other DOM events
+    window.addEventListener("scroll", function () {
+      const scrollTip = document.getElementById("scrollMessage");
+      if (window.scrollY > 100) {
+        scrollTip.style.display = "block";
+        scrollTip.style.opacity = "1";
+      }
+    });
+  </script>
 </body>
 </html>

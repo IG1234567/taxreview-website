@@ -1,44 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>TaxReview</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tax-reliefs.html">Tax Reliefs</a></li>
-                <li><a href="calculations.html">Calculations</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Get in Touch</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-    
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname" required>
-    
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
-    
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-    
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-    
-            <button type="submit" class="contacts-button">Send</button>
-        </form>
-    </main>
+  <header class="bg-dark text-white text-center py-3">
+    <h1>TaxReview</h1>
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="tax-reliefs.html">Tax Reliefs</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calculations.html">Calculations</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calendar.html">Calendar</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="api-demo.html">API Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h2 class="text-center mb-4">Get in Touch</h2>
+    <form id="contactForm" novalidate>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" id="name" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label for="surname" class="form-label">Surname:</label>
+          <input type="text" id="surname" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone:</label>
+          <input type="tel" id="phone" class="form-control" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{5}" placeholder="370-699-12345" />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" id="email" class="form-control" required />
+        </div>
+        <div class="col-12">
+          <label for="message" class="form-label">Message:</label>
+          <textarea id="message" class="form-control" required></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-warning w-100">Send</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Success message -->
+    <div id="contactSuccess" class="alert alert-success mt-4 d-none">
+      ✅ Thank you for your message! We'll get back to you soon.
+    </div>
+  </main>
+
+  <!-- Bootstrap + JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const contactForm = document.getElementById("contactForm");
+    const successMessage = document.getElementById("contactSuccess");
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const surname = document.getElementById("surname").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !surname || !phone || !email || !message) {
+        alert("❌ Please fill in all fields correctly.");
+        return;
+      }
+
+      // Store input into object
+      const contactData = {
+        name,
+        surname,
+        phone,
+        email,
+        message,
+      };
+
+      console.log("Contact Form Submitted:", contactData);
+      successMessage.classList.remove("d-none");
+      alert("✅ Message sent successfully!");
+      contactForm.reset();
+    });
+
+    // Additional DOM events
+    ["name", "surname", "phone", "email", "message"].forEach(id => {
+      const field = document.getElementById(id);
+      field.addEventListener("focus", () => console.log(`${id} focused`));
+      field.addEventListener("blur", () => console.log(`${id} blurred`));
+      field.addEventListener("input", () => console.log(`${id} changed`));
+    });
+  </script>
 </body>
 </html>

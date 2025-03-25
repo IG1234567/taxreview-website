@@ -4,45 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaxReview - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="bg-dark text-white text-center py-3">
         <h1>TaxReview</h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tax-reliefs.html">Tax Reliefs</a></li>
-                <li><a href="calculations.html">Calculations</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="tax-reliefs.html">Tax Reliefs</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="calculations.html">Calculations</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="calendar.html">Calendar</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="api-demo.html">API Demo</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Latest Articles</h2>
-        <div class="articles-grid">
-            <div class="article-item">
-                <img src="assets/income-tax.png" alt="Income Tax" class="article-image">
-                <h3>Understanding Income Tax for 2025</h3>
-                <a href="#" class="video-link">Watch Video</a>
+
+    <main class="container my-4">
+        <h2 class="text-center mb-4">Latest Articles</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+            <!-- Bootstrap card structure for each article -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/income-tax.png" class="card-img-top" alt="Income Tax">
+                    <div class="card-body">
+                        <h5 class="card-title">Understanding Income Tax for 2025</h5>
+                        <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#articleModal" onclick="openModal('Income Tax 2025')">Watch Video</a>
+                    </div>
+                </div>
             </div>
-            <div class="article-item">
-                <img src="assets/tax-deductions.png" alt="Tax Deductions" class="article-image">
-                <h3>New Tax Deductions for Individuals</h3>
-                <a href="#" class="video-link">Watch Video</a>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/tax-deductions.png" class="card-img-top" alt="Tax Deductions">
+                    <div class="card-body">
+                        <h5 class="card-title">New Tax Deductions for Individuals</h5>
+                        <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#articleModal" onclick="openModal('New Deductions')">Watch Video</a>
+                    </div>
+                </div>
             </div>
-            <div class="article-item">
-                <img src="assets/tax-refund.png" alt="Tax Refund" class="article-image">
-                <h3>How to Maximize Your Tax Refund</h3>
-                <a href="#" class="video-link">Watch Video</a>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/tax-refund.png" class="card-img-top" alt="Tax Refund">
+                    <div class="card-body">
+                        <h5 class="card-title">How to Maximize Your Tax Refund</h5>
+                        <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#articleModal" onclick="openModal('Tax Refund')">Watch Video</a>
+                    </div>
+                </div>
             </div>
-            <div class="article-item">
-                <img src="assets/tax-mistakes.png" alt="Tax Mistakes" class="article-image">
-                <h3>Common Tax Filing Mistakes to Avoid</h3>
-                <a href="#" class="video-link">Watch Video</a>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/tax-mistakes.png" class="card-img-top" alt="Tax Mistakes">
+                    <div class="card-body">
+                        <h5 class="card-title">Common Tax Filing Mistakes to Avoid</h5>
+                        <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#articleModal" onclick="openModal('Filing Mistakes')">Watch Video</a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+
+    <!-- Bootstrap Modal for overlay -->
+    <div class="modal fade" id="articleModal" tabindex="-1" aria-labelledby="articleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="articleModalLabel">Article Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    More information about the selected article will appear here.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap + Custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript function to update modal title
+        function openModal(title) {
+            document.getElementById('articleModalLabel').textContent = title;
+            document.querySelector('.modal-body').textContent = `Details for "${title}" coming soon...`;
+        }
+    </script>
 </body>
 </html>

@@ -57,6 +57,9 @@ TaxReview/
 - **Responsive Design** for mobile-friendly viewing
 
 ## Next Steps
-- 
-- 
-- 
+- **Extended the existing TaxReview website with Bootstrap styling, logic, DOM events, overlays, collapsibles, functions, objects.**
+
+- **API integration with list + single result, parsing, dynamic rendering, and Bootstrap styling.** Created a new page: api-demo.html to demonstrate API usage.
+- Implemented two different API calls:
+  - Numbers API: returns a fact based on a random year (task: single result).
+  - Frankfurter API: returns a list of exchange rates (task: list of objects).

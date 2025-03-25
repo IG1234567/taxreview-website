@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance API Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bg-dark text-white text-center py-3">
+    <h1>TaxReview</h1>
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="tax-reliefs.html">Tax Reliefs</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calculations.html">Calculations</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calendar.html">Calendar</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="api-demo.html">API Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h2 class="text-center mb-4">Live Facts & Exchange Rates</h2>
+
+    <!-- Section: Fun fact -->
+    <section class="mb-5">
+      <h4>💡 Did You Know?</h4>
+      <div id="fact-box" class="alert alert-info d-flex align-items-center">
+        <div id="fact-spinner" class="spinner-border text-warning me-3" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <span id="fact-text">Loading finance fact...</span>
+      </div>
+      <button id="next-fact" class="btn btn-warning mt-2">🔁 Show Another Fact</button>
+    </section>
+
+    <!-- Section 2: Exchange Rates -->
+    <section>
+      <h4>💱 Exchange Rates (Base: EUR)</h4>
+      <div id="rates-container" class="row g-3">
+      </div>
+    </section>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Script -->
+  <script>
+    const factText = document.getElementById("fact-text");
+    const spinner = document.getElementById("fact-spinner");
+    const button = document.getElementById("next-fact");
+
+    function loadFact() {
+      spinner.classList.remove("d-none");
+      factText.textContent = "Loading...";
+
+      const randomYear = Math.floor(Math.random() * (2025 - 1980 + 1)) + 1980;
+
+      fetch(`http://numbersapi.com/${randomYear}/year?json`)
+        .then(response => response.json())
+        .then(data => {
+          factText.textContent = data.text;
+          spinner.classList.add("d-none");
+        })
+        .catch(() => {
+          factText.textContent = "Unable to load fact.";
+          spinner.classList.add("d-none");
+        });
+    }
+
+    // Initial fact on page load
+    loadFact();
+
+    // Load another fact on button click
+    button.addEventListener("click", loadFact);
+
+    // Load exchange rates
+    fetch("https://api.frankfurter.app/latest?from=EUR")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("rates-container");
+        const topCurrencies = ["USD", "GBP", "JPY", "CHF", "AUD", "CAD", "CNY", "PLN", "SEK", "NOK"];
+
+        topCurrencies.forEach(currency => {
+          const rate = data.rates[currency];
+          if (rate) {
+            const card = `
+              <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-primary">
+                  <div class="card-body">
+                    <h5 class="card-title">${currency}</h5>
+                    <p class="card-text">1 EUR = <strong>${rate}</strong> ${currency}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+            container.insertAdjacentHTML('beforeend', card);
+          }
+        });
+      })
+      .catch(() => {
+        const fallback = `<div class="alert alert-warning">⚠️ Failed to load exchange rates.</div>`;
+        document.getElementById("rates-container").innerHTML = fallback;
+      });
+  </script>
+</body>
+</html>

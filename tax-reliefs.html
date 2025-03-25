@@ -1,44 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Reliefs</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tax Reliefs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>TaxReview</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tax-reliefs.html">Tax Reliefs</a></li>
-                <li><a href="calculations.html">Calculations</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Available Tax Reliefs for Individuals</h2>
-        <ul class="tax-list">
-            <li><strong>Personal Allowance:</strong> Tax-free income up to a certain threshold.</li>
-            <li><strong>Charitable Donations:</strong> Tax deductions for donations to registered charities.</li>
-            <li><strong>Gift Exemptions:</strong> Certain gifts are not subject to taxation.</li>
-            <li><strong>Dividend Allowance:</strong> A portion of dividend income is tax-free.</li>
-            <li><strong>Non-Taxable Income:</strong> Inheritances, compensation payments, and certain government benefits.</li>
-            <li><strong>Child Tax Credit:</strong> Tax relief for families with dependent children.</li>
-            <li><strong>Education Expenses:</strong> Deductions for tuition, student loan interest, and scholarships.</li>
-            <li><strong>Medical Expense Deduction:</strong> Eligible out-of-pocket medical costs may be deducted.</li>
-            <li><strong>Retirement Contributions:</strong> Tax relief on contributions to pension and retirement plans.</li>
-            <li><strong>Home Mortgage Interest Deduction:</strong> Interest on qualifying home loans may be deductible.</li>
-            <li><strong>Rental Income Exemptions:</strong> Certain rental earnings under a threshold may be tax-free.</li>
-            <li><strong>Capital Gains Tax Relief:</strong> Relief for selling personal assets or investments.</li>
-            <li><strong>Disability Tax Credit:</strong> Relief for individuals with disabilities or their caregivers.</li>
-            <li><strong>Tax-Free Savings Accounts:</strong> Interest earned on certain savings accounts may be tax-free.</li>
-            <li><strong>Foreign Income Exemption:</strong> Certain earnings from abroad may qualify for exclusions.</li>
-            <li><strong>Transportation Benefits:</strong> Relief for work-related transportation expenses.</li>
-        </ul>
-    </main>
+  <header class="bg-dark text-white text-center py-3">
+    <h1>TaxReview</h1>
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="tax-reliefs.html">Tax Reliefs</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calculations.html">Calculations</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="calendar.html">Calendar</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Contacts</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="api-demo.html">API Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <h2 class="text-center mb-4">Available Tax Reliefs for Individuals</h2>
+
+    <!-- Bootstrap Accordion -->
+    <div class="accordion" id="reliefAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#relief1">Personal Allowance</button>
+        </h2>
+        <div id="relief1" class="accordion-collapse collapse show">
+          <div class="accordion-body">Tax-free income up to a certain threshold.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief2">Charitable Donations</button>
+        </h2>
+        <div id="relief2" class="accordion-collapse collapse">
+          <div class="accordion-body">Tax deductions for donations to registered charities.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief3">Gift Exemptions</button>
+        </h2>
+        <div id="relief3" class="accordion-collapse collapse">
+          <div class="accordion-body">Certain gifts are not subject to taxation.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief4">Dividend Allowance</button>
+        </h2>
+        <div id="relief4" class="accordion-collapse collapse">
+          <div class="accordion-body">A portion of dividend income is tax-free.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief5">Non-Taxable Income</button>
+        </h2>
+        <div id="relief5" class="accordion-collapse collapse">
+          <div class="accordion-body">Inheritances, compensation payments, and certain government benefits.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief6">Child Tax Credit</button>
+        </h2>
+        <div id="relief6" class="accordion-collapse collapse">
+          <div class="accordion-body">Tax relief for families with dependent children.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief7">Education Expenses</button>
+        </h2>
+        <div id="relief7" class="accordion-collapse collapse">
+          <div class="accordion-body">Deductions for tuition, student loan interest, and scholarships.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief8">Medical Expense Deduction</button>
+        </h2>
+        <div id="relief8" class="accordion-collapse collapse">
+          <div class="accordion-body">Eligible out-of-pocket medical costs may be deducted.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief9">Retirement Contributions</button>
+        </h2>
+        <div id="relief9" class="accordion-collapse collapse">
+          <div class="accordion-body">Tax relief on contributions to pension and retirement plans.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief10">Home Mortgage Interest Deduction</button>
+        </h2>
+        <div id="relief10" class="accordion-collapse collapse">
+          <div class="accordion-body">Interest on qualifying home loans may be deductible.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief11">Rental Income Exemptions</button>
+        </h2>
+        <div id="relief11" class="accordion-collapse collapse">
+          <div class="accordion-body">Certain rental earnings under a threshold may be tax-free.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief12">Capital Gains Tax Relief</button>
+        </h2>
+        <div id="relief12" class="accordion-collapse collapse">
+          <div class="accordion-body">Relief for selling personal assets or investments.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief13">Disability Tax Credit</button>
+        </h2>
+        <div id="relief13" class="accordion-collapse collapse">
+          <div class="accordion-body">Relief for individuals with disabilities or their caregivers.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief14">Tax-Free Savings Accounts</button>
+        </h2>
+        <div id="relief14" class="accordion-collapse collapse">
+          <div class="accordion-body">Interest earned on certain savings accounts may be tax-free.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief15">Foreign Income Exemption</button>
+        </h2>
+        <div id="relief15" class="accordion-collapse collapse">
+          <div class="accordion-body">Certain earnings from abroad may qualify for exclusions.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#relief16">Transportation Benefits</button>
+        </h2>
+        <div id="relief16" class="accordion-collapse collapse">
+          <div class="accordion-body">Relief for work-related transportation expenses.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
